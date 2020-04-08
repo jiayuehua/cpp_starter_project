@@ -1,6 +1,5 @@
 # Build Files
 .vs/
-build.*/
 **/CMakeFiles/
 **/CMakeCache.txt
 # Windows build files
@@ -25,7 +24,6 @@ dependencies*/
 #translations
 
 # Useful Customization Files
-data/levels/more/
 *.patch
 *.zip
 *.diff
