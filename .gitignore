@@ -3,7 +3,6 @@
 **/CMakeFiles/
 **/CMakeCache.txt
 # Windows build files
-Release/
 out/
 # Version file
 version.cmake
@@ -28,13 +27,4 @@ dependencies*/
 *.zip
 *.diff
 
-# Annoying OS Generated Files
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-.directory
 *~
