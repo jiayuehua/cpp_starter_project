@@ -1,8 +1,7 @@
-find_package(spdlog CONFIG REQUIRED)
 find_package(fmt CONFIG REQUIRED)
 
 # Generic test that uses conan libs
 add_executable(intro main.cpp)
 target_link_libraries(
   intro PRIVATE project_options project_warnings 
-                fmt::fmt fmt::fmt-header-only  spdlog::spdlog spdlog::spdlog_header_only)
+                fmt::fmt fmt::fmt-header-only  )

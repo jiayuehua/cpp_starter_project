@@ -1,10 +1,11 @@
 #include <functional>
 #include <iostream>
 
-#include <spdlog/spdlog.h>
+//#include <spdlog/spdlog.h>
 
 
 //#include <docopt/docopt.h>
+#include <fmt/format.h>
 
 #include <iostream>
 #include <map>
@@ -40,7 +41,7 @@ int main(int argc, const char **argv)
 
 
   //Use the default logger (stdout, multi-threaded, colored)
-  spdlog::info("Hello, {}!", "World");
+  //spdlog::info("Hello, {}!", "World");
 
   fmt::print("Hello, from {}\n", "{fmt}");
 }
