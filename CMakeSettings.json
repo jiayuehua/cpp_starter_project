@@ -10,6 +10,8 @@
       "cmakeCommandArgs": "",
       "buildCommandArgs": "-v",
       "ctestCommandArgs": "",
+      "clangTidyChecks": "*",
+            "codeAnalysisRuleset": "${projectDir}\\TutorialRuleset.ruleset",
       "variables": []
     },
     {
@@ -22,6 +24,8 @@
       "buildCommandArgs": "-v",
       "ctestCommandArgs": "",
       "inheritEnvironments": [ "msvc_x86" ],
+      "clangTidyChecks": "*",
+            "codeAnalysisRuleset": "${projectDir}\\TutorialRuleset.ruleset",
       "variables": []
     },
     {
@@ -37,6 +41,7 @@
       "inheritEnvironments": [ "linux_clang_x64" ],
       "wslPath": "${defaultWSLPath}",
       "addressSanitizerRuntimeFlags": "detect_leaks=0",
+      "clangTidyChecks": "*",
       "variables": [
         {
           "name": "ENABLE_TESTING",
@@ -58,6 +63,7 @@
       "inheritEnvironments": [ "linux_x64" ],
       "wslPath": "${defaultWSLPath}",
       "addressSanitizerRuntimeFlags": "detect_leaks=0",
+      "clangTidyChecks": "*",
       "variables": []
     }
   ]
