@@ -97,10 +97,10 @@ jobs:
           -password "${{ secrets.GITHUB_TOKEN }}"
 
       # Omit this step if you're using manifests
-      - name: 'vcpkg package restore'
-        shell: 'bash'
-        run: >
-          $VCPKG_ROOT/vcpkg install catch2 fmt  --triplet ${{ matrix.triplet }}
+#      - name: 'vcpkg package restore'
+#        shell: 'bash'
+#        run: >
+#          $VCPKG_ROOT/vcpkg install catch2 fmt  --triplet ${{ matrix.triplet }}
 
       - name: 'Run CMake with Ninja'
         uses: lukka/run-cmake@v3
