@@ -28,7 +28,7 @@ static constexpr auto USAGE =
           --drifting    Drifting mine.
 )";
 
-int main(int argc, const char **argv)
+int main(int, const char **)
 {
   //std::map<std::string, docopt::value> args = docopt::docopt(USAGE,
   //  { std::next(argv), std::next(argv, argc) },
