@@ -20,7 +20,8 @@ jobs:
     strategy:
       matrix:
         
-        vstriplet: ['x64-Debug','WSL-Clang-Debug','WSL-GCC-Debug']
+        #vstriplet: ['x64-Debug','WSL-Clang-Debug','WSL-GCC-Debug']
+        vstriplet: ['WSL-Clang-Debug','WSL-GCC-Debug']
                 
 
         include:
