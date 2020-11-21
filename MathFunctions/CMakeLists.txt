@@ -12,7 +12,7 @@ set_property(TARGET MathFunctions PROPERTY SOVERSION "1")
 
 
 # should we use our own math functions
-target_link_libraries(MathFunctions PUBLIC   project_options project_warnings)
+target_link_libraries(MathFunctions PUBLIC   project_options PRIVATE project_warnings)
 option(USE_MYMATH "Use tutorial provided math implementation" OFF)
 if(USE_MYMATH)
 
@@ -56,7 +56,7 @@ target_link_libraries(MathFunctions PUBLIC project_options)
 target_compile_definitions(MathFunctions PRIVATE "EXPORTING_MYMATH")
 
 # install rules
-install(TARGETS MathFunctions project_options
+install(TARGETS MathFunctions project_options project_warnings
 EXPORT MathFunctionsTargets
         RUNTIME DESTINATION bin
         LIBRARY DESTINATION lib
