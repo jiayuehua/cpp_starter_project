@@ -14,6 +14,7 @@ jobs:
   build:
     env:
       VCPKG_BINARY_SOURCES: 'clear;nuget,https://nuget.pkg.github.com/jiayuehua/index.json,readwrite'
+			vcpkgResponseFile: '${{ github.workspace }}/responsefile.txt'
 
 
 
@@ -67,14 +68,17 @@ jobs:
         
       - name: Restore from cache and install vcpkg
         # Download and build vcpkg, without installing any port. If content is cached already, it is a no-op.
-        uses: lukka/run-vcpkg@v4
+        uses: lukka/run-vcpkg@v5
         with:
+          # Response file stored in source control, it provides the list of ports and triplet(s).
+					vcpkgArguments: '@${{ env.vcpkgResponseFile }}'
+
           # Location of the vcpkg as submodule of the repository.
           vcpkgDirectory: '${{ github.workspace }}/vcpkg'
           # Since the cache must be invalidated when content of the response file changes, let's
           # compute its hash and append this to the computed cache's key.
           appendedCacheKey: ${{ hashFiles(env.vcpkgResponseFile) }}
-          setupOnly: true
+          #setupOnly: true
 
 
 
