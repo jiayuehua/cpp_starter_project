@@ -12,7 +12,6 @@ set_property(TARGET MathFunctions PROPERTY SOVERSION "1")
 
 
 # should we use our own math functions
-target_link_libraries(MathFunctions PUBLIC   project_options PRIVATE project_warnings)
 option(USE_MYMATH "Use tutorial provided math implementation" OFF)
 if(USE_MYMATH)
 
@@ -20,7 +19,7 @@ if(USE_MYMATH)
 
   # first we add the executable that generates the table
   add_executable(MakeTable MakeTable.cxx)
-  target_link_libraries(MakeTable project_options)
+  target_link_libraries(MakeTable project_options project_warnings)
 
   # add the command to generate the source code
   add_custom_command(
@@ -45,11 +44,11 @@ if(USE_MYMATH)
                         POSITION_INDEPENDENT_CODE ${BUILD_SHARED_LIBS}
                         )
 
-  target_link_libraries(SqrtLibrary PUBLIC project_options)
-  target_link_libraries(MathFunctions PRIVATE SqrtLibrary)
+  target_link_libraries(SqrtLibrary PRIVATE project_options project_warnings)
+  target_link_libraries(MathFunctions PRIVATE SqrtLibrary )
 endif()
 
-target_link_libraries(MathFunctions PUBLIC project_options)
+target_link_libraries(MathFunctions PUBLIC project_options project_warnings)
 
 # define the symbol stating we are using the declspec(dllexport) when
 #building on windows
