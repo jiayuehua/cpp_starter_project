@@ -14,7 +14,7 @@ jobs:
   build:
     env:
       VCPKG_BINARY_SOURCES: 'clear;nuget,https://nuget.pkg.github.com/jiayuehua/index.json,readwrite'
-			vcpkgResponseFile: '${{ github.workspace }}/responsefile.txt'
+      vcpkgResponseFile: '${{ github.workspace }}/responsefile.txt'
 
 
 
