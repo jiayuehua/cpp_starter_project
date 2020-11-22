@@ -14,7 +14,6 @@ jobs:
   build:
     env:
       VCPKG_BINARY_SOURCES: 'clear;nuget,https://nuget.pkg.github.com/jiayuehua/index.json,readwrite'
-			vcpkgResponseFile: '${{ github.workspace }}/responsefile.txt'
 
 
 
@@ -29,6 +28,7 @@ jobs:
             triplet: 'x64-windows'
             mono: ''
             vstriplet: 'x64-Debug'
+            vcpkgResponseFile: '${{ github.workspace }}/responsefileWindows.txt'
             
         
           - os: 'ubuntu-20.04'
@@ -36,6 +36,7 @@ jobs:
             # To run `nuget.exe` on non-Windows platforms, we must use `mono`.
             mono: 'mono'
             vstriplet: 'WSL-Clang-Debug'
+            vcpkgResponseFile: '${{ github.workspace }}/responsefile.txt'
             
       
           - os: 'ubuntu-20.04'
@@ -43,6 +44,7 @@ jobs:
             # To run `nuget.exe` on non-Windows platforms, we must use `mono`.
             mono: 'mono'
             vstriplet: 'WSL-GCC-Debug'  
+            vcpkgResponseFile: '${{ github.workspace }}/responsefile.txt'
             
             
             
@@ -70,13 +72,13 @@ jobs:
         uses: lukka/run-vcpkg@v5
         with:
           # Response file stored in source control, it provides the list of ports and triplet(s).
-					vcpkgArguments: '@${{ env.vcpkgResponseFile }}'
+					vcpkgArguments: '@${{ matrix.vcpkgResponseFile }}'
 
           # Location of the vcpkg as submodule of the repository.
           vcpkgDirectory: '${{ github.workspace }}/vcpkg'
           # Since the cache must be invalidated when content of the response file changes, let's
           # compute its hash and append this to the computed cache's key.
-          appendedCacheKey: ${{ hashFiles(env.vcpkgResponseFile) }}
+          appendedCacheKey: ${{ hashFiles(matrix.vcpkgResponseFile) }}
           #setupOnly: true
 
 
