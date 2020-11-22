@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.15)
 
-
-project(Tutorial VERSION 1.0)
+# Set the project name to your project name, my project isn't very descriptive
+project(Tutorial VERSION 1.0 LANGUAGES CXX)
 include(cmake/StandardProjectSettings.cmake)
 include(cmake/PreventInSourceBuilds.cmake)
 
@@ -39,6 +39,7 @@ enable_doxygen()
 # allow for static analysis options
 include(cmake/StaticAnalyzers.cmake)
 
+
 option(ENABLE_TESTING "Enable Test Builds" ON)
 
 # Very basic PCH example
@@ -58,6 +59,8 @@ endif()
 
 
 
+#include(cmake/Conan.cmake)
+#run_conan()
 
 if(ENABLE_TESTING)
   enable_testing()
@@ -108,6 +111,9 @@ install(FILES "${PROJECT_BINARY_DIR}/TutorialConfig.h"
   DESTINATION include
   )
 
+# enable testing
+enable_testing()
+# set(VCPKG_ROOT "/home/rob/openSrc/vcpkg")
 
 include(InstallRequiredSystemLibraries)
 set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/License.txt")
