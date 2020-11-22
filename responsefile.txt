@@ -1,4 +1,4 @@
 fmt
 catch2
 --triplet
-x64-windows
+x64-linux
