@@ -4,7 +4,8 @@ cmake_minimum_required(VERSION 3.15)
 project(Tutorial VERSION 1.0)
 include(cmake/StandardProjectSettings.cmake)
 include(cmake/PreventInSourceBuilds.cmake)
-
+include(cmake/PrintVariables.cmake)
+print_variables()
 # Link this 'library' to set the c++ standard / compile-time options requested
 add_library(project_options INTERFACE)
 target_compile_features(project_options INTERFACE cxx_std_17)
