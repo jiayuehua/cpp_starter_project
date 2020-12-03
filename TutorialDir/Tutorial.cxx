@@ -4,12 +4,12 @@
 #include <string>
 #include <cmath>
 
-#include "TutorialConfig.h"
+#include "../TutorialConfig.h"
 #include "MathFunctions.h"
-int       initial() { return 7; }
+int initial() { return 7; }
 const int hello = 40 + initial();
 
-int main(int argc, char* argv[])
+int main(int argc, char *argv[])
 {
   std::cout << "hello\n";
   argc += 2;
