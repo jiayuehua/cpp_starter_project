@@ -13,7 +13,7 @@ set_property(TARGET MathFunctions PROPERTY SOVERSION "1")
 
 # should we use our own math functions
 #target_link_libraries(MathFunctions INTERFACE tutorial_compiler_flags)
-option(USE_MYMATH "Use tutorial provided math implementation" ON)
+option(USE_MYMATH "Use tutorial provided math implementation" OFF)
 if(USE_MYMATH)
 
   target_compile_definitions(MathFunctions PRIVATE "USE_MYMATH")

@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.15)
 
 project(Tutorial VERSION 1.0)
 include(cmake/StandardProjectSettings.cmake)
-include(cmake/PreventInSourceBuilds.cmake)
+#include(cmake/PreventInSourceBuilds.cmake)
 include(cmake/PrintVariables.cmake)
 print_variables()
 # Link this 'library' to set the c++ standard / compile-time options requested
@@ -13,7 +13,7 @@ target_compile_features(project_options INTERFACE cxx_std_17)
 if(CMAKE_CXX_COMPILER_ID MATCHES ".*Clang")
   option(ENABLE_BUILD_WITH_TIME_TRACE "Enable -ftime-trace to generate time tracing .json files on clang" OFF)
   if(ENABLE_BUILD_WITH_TIME_TRACE)
-    add_compile_definitions(project_options INTERFACE -ftime-trace)
+    target_compile_options(project_options INTERFACE -ftime-trace)
   endif()
 endif()
 
@@ -40,7 +40,9 @@ enable_doxygen()
 # allow for static analysis options
 include(cmake/StaticAnalyzers.cmake)
 
-option(ENABLE_TESTING "Enable Test Builds" ON)
+option(BUILD_SHARED_LIBS "Enable compilation of shared libraries" OFF)
+option(ENABLE_TESTING "Enable Test Builds" OFF)
+option(ENABLE_FUZZING "Enable Fuzzing Builds" OFF)
 
 # Very basic PCH example
 option(ENABLE_PCH "Enable Precompiled Headers" OFF)
@@ -57,7 +59,7 @@ if(ENABLE_PCH)
     <utility>)
 endif()
 
-
+# Set up some extra Conan dependencies based on our needs before loading Conan
 
 
 if(ENABLE_TESTING)
@@ -70,7 +72,6 @@ if(ENABLE_FUZZING)
   message("Building Fuzz Tests, using fuzzing sanitizer https://www.llvm.org/docs/LibFuzzer.html")
   add_subdirectory(fuzz_test)
 endif()
-
 
 #add_subdirectory(src)
 
@@ -97,7 +98,6 @@ endif()
 
 # configure a header file to pass the version number only
 configure_file(TutorialConfig.h.in TutorialConfig.h)
-
 # add the MathFunctions library
 add_subdirectory(MathFunctions)
 add_subdirectory(TutorialDir)
